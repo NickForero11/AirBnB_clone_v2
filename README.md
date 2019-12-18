@@ -2,7 +2,8 @@
 
 This is the console /command interpreter for the Holberton Airbnb clone project. The console can be used to store objects in and retrieve objects from a JSON.
 
-### Supported classes:
+## Supported classes
+
 * BaseModel
 * User
 * State
@@ -11,7 +12,8 @@ This is the console /command interpreter for the Holberton Airbnb clone project.
 * Place
 * Review
 
-### Commands:
+### Commands
+
 * create - create an object
 * show - show an object (based on id)
 * destroy - destroy an object
@@ -22,33 +24,45 @@ This is the console /command interpreter for the Holberton Airbnb clone project.
 To start, navigate to the project folder and enter `./console.py` in the shell.
 
 #### Create
+
 `create <class name>`
-Ex:
+Example:
 `create BaseModel`
 
 #### Show
+
 `show <class name> <object id>`
-Ex:
+Example:
 `show User my_id`
 
 #### Destroy
+
 `destroy <class name> <object id>`
-Ex:
+Example:
 `destroy Place my_place_id`
 
 #### All
+
 `all` or `all <class name>`
-Ex:
+Example:
 `all` or `all State`
 
 #### Quit
+
 `quit` or `EOF`
 
 #### Help
+
 `help` or `help <command>`
-Ex:
+Example:
 `help` or `help quit`
 
 Additionally, the console supports `<class name>.<command>(<parameters>)` syntax.
-Ex:
+Example:
 `City.show(my_city_id)`
+
+## Authors
+
+* **Nicolas Forero Puello** - [NickForero11](https://github.com/NickForero11)
+
+* **Pablo Andres Sanchez Monsalve** - [Jackeado](https://github.com/Jackeado)
