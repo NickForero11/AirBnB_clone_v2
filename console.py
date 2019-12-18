@@ -41,8 +41,23 @@ class HBNBCommand(cmd.Cmd):
         try:
             if not line:
                 raise SyntaxError()
-            my_list = line.split(" ")
-            obj = eval("{}()".format(my_list[0]))
+            parsed_command = line.split(' ')
+
+            class_name = parsed_command[0]
+            obj = eval("{}()".format(class_name))
+
+            for param in parsed_command[1:]:
+                (key, value) = param.split('=')
+                if '_' in value:
+                    value = value.replace('_', ' ')
+                if value.startswith('"'):
+                    value = value.replace('"', '')
+                elif '.' in value:
+                    value = float(value)
+                else:
+                        value = int(value)
+                setattr(obj, key, value)
+
             obj.save()
             print("{}".format(obj.id))
         except SyntaxError:
