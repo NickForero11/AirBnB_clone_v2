@@ -28,7 +28,9 @@ class FileStorage:
         response = self.__objects
         if cls:
             classname = type(cls).__name__
-            check_class = lambda item: item[0].startswith(classname)
+
+            def check_class(item):
+                return item[0].startswith(classname)
 
             required_elements = filter(check_class, self.__objects.items())
 
