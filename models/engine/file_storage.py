@@ -17,11 +17,11 @@ class FileStorage:
         __file_path: path to the JSON file
         __objects: objects will be stored
     """
-    __file_path = "file.json"
     __objects = {}
 
     def all(self, cls=None):
         """returns a dictionary
+    __file_path = "file.json"
         Return:
             returns a dictionary of __object
         """
@@ -67,6 +67,9 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
+        """delete a specific object/instance from the dictionary of objects by
+        givin itself.
+        """
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             if key in self.__objects:
