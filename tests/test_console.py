@@ -17,6 +17,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models.engine.file_storage import FileStorage
+import sys
 
 
 class TestConsole(unittest.TestCase):
@@ -72,6 +73,8 @@ class TestConsole(unittest.TestCase):
             self.consol.onecmd("quit")
             self.assertEqual('', f.getvalue())
 
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == "db",
+                     "This test only works with FileStorage")
     def test_create(self):
         """Test create command inpout"""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -136,6 +139,8 @@ class TestConsole(unittest.TestCase):
             self.consol.onecmd("all State")
             self.assertEqual("[]\n", f.getvalue())
 
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == "db",
+                     "This test only works with FileStorage")
     def test_update(self):
         """Test update command inpout"""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -157,7 +162,7 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("all User")
             obj = f.getvalue()
-        my_id = obj[obj.find('(')+1:obj.find(')')]
+        my_id = obj[obj.find('(') + 1:obj.find(')')]
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("update User " + my_id)
             self.assertEqual(
@@ -209,6 +214,8 @@ class TestConsole(unittest.TestCase):
             self.assertEqual(
                 "** no instance found **\n", f.getvalue())
 
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == "db",
+                     "This test only works with FileStorage")
     def test_update(self):
         """Test alternate destroy command inpout"""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -222,7 +229,7 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("all User")
             obj = f.getvalue()
-        my_id = obj[obj.find('(')+1:obj.find(')')]
+        my_id = obj[obj.find('(') + 1:obj.find(')')]
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("User.update(" + my_id + ")")
             self.assertEqual(
@@ -231,6 +238,7 @@ class TestConsole(unittest.TestCase):
             self.consol.onecmd("User.update(" + my_id + ", name)")
             self.assertEqual(
                 "** value missing **\n", f.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()
