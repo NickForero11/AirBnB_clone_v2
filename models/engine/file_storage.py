@@ -27,7 +27,7 @@ class FileStorage:
         """
         response = self.__objects
         if cls:
-            classname = type(cls).__name__
+            classname = cls.__name__
 
             def check_class(item):
                 return item[0].startswith(classname)
