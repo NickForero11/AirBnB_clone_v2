@@ -216,28 +216,28 @@ class TestConsole(unittest.TestCase):
 
     @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == "db",
                      "This test only works with FileStorage")
-    def test_update(self):
-        """Test alternate destroy command inpout"""
+    def test_z_create_with_params(self):
+        """Test create models using params"""
         with patch('sys.stdout', new=StringIO()) as f:
-            self.consol.onecmd("sldkfjsl.update()")
-            self.assertEqual(
-                "** class doesn't exist **\n", f.getvalue())
+            self.consol.onecmd('create State name="Arizona"')
         with patch('sys.stdout', new=StringIO()) as f:
-            self.consol.onecmd("User.update(12345)")
-            self.assertEqual(
-                "** no instance found **\n", f.getvalue())
+            self.consol.onecmd('create User email="test_1@gmail.com"')
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.consol.onecmd('create Review text=5')
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.consol.onecmd('create Place name=127.0')
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.consol.onecmd("all State")
+            self.assertEqual("[[State]", f.getvalue()[:8])
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("all User")
-            obj = f.getvalue()
-        my_id = obj[obj.find('(') + 1:obj.find(')')]
+            self.assertEqual("[[User]", f.getvalue()[:7])
         with patch('sys.stdout', new=StringIO()) as f:
-            self.consol.onecmd("User.update(" + my_id + ")")
-            self.assertEqual(
-                "** attribute name missing **\n", f.getvalue())
+            self.consol.onecmd("all Review")
+            self.assertEqual("[[Review]", f.getvalue()[:9])
         with patch('sys.stdout', new=StringIO()) as f:
-            self.consol.onecmd("User.update(" + my_id + ", name)")
-            self.assertEqual(
-                "** value missing **\n", f.getvalue())
+            self.consol.onecmd("all Place")
+            self.assertEqual("[[Place]", f.getvalue()[:8])
 
 
 if __name__ == "__main__":
