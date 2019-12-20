@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
                 elif '.' in value:
                     value = float(value)
                 else:
-                        value = int(value)
+                    value = int(value)
                 setattr(obj, key, value)
 
             obj.save()
