@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Fabfile to:
     Generate a backup of the actual content of the project.
     Save the backup in a certain folder.
