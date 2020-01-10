@@ -19,8 +19,11 @@ sudo apt-get update -y
 sudo apt-get install nginx -y
 
 # Create Folders structure
-sudo mkdir -p /data/web_static/releases/test/
+sudo mkdir -p /data/
+sudo mkdir -p /data/web_static/
+sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/
 
 # Create dummy test page
 echo -e '<html>
