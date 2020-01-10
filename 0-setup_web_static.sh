@@ -23,7 +23,13 @@ sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 
 # Create dummy test page
-echo -e '<h1>Holberton web static deployment test page</h1>\n' | sudo tee $path_dummy_test_page
+echo -e '<html>
+\t<head>
+\t</head>
+\t<body>
+\tHolberton School
+\t</body>
+</html>\n' | sudo tee $path_dummy_test_page
 
 # Create symbolic link from test to current
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
