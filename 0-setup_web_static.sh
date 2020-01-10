@@ -32,7 +32,7 @@ echo -e '<html>
 \t<body>
 \tHolberton School
 \t</body>
-</html>\n' | sudo tee $path_dummy_test_page
+</html>' | sudo tee $path_dummy_test_page
 
 # Create symbolic link from test to current
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
