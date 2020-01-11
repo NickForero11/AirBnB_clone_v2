@@ -55,4 +55,5 @@ def do_deploy(archive_path):
     serving_path = '/data/web_static/current'
     run('rm -rf {}'.format(serving_path))
     run('ln -s {} {}'.format(deploy_path, serving_path))
+    print('New version deployed!')
     return True
