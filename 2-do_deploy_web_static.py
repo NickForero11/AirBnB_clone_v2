@@ -11,6 +11,21 @@ env.hosts = ['35.231.32.184', '35.185.113.169']
 env.user = 'ubuntu'
 
 
+def do_pack():
+    """Function to create the backup of the project
+
+    Returns: Path to the backup or None otherwise.
+    """
+    local('mkdir -p ./versions', capture=False)
+    date = datetime.now()
+    date_args = (date.year, date.month, date.day,
+                 date.hour, date.minute, date.second)
+    name_backup = './versions/web_static_{}{}{}{}{}{}.tgz'.format(*date_args)
+    local('tar -cvzf ' + name_backup + ' web_static/')
+
+    return name_backup if exists(name_backup) else None
+
+
 def do_deploy(archive_path):
     """Fabric script to upload new static files to all servers
     and configure the server to deploy they.
