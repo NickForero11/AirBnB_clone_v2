@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module to make a simple Flask web application.
+"""Module to make a simple Flask web application with multiple routes.
 """
 
 from flask import Flask
@@ -17,6 +17,20 @@ def root_page():
         app.route
     """
     return 'Hello HBNB!'
+
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """Helper function to serve a message on the '/hbnb' route.
+
+    Take in account that this function will be triggered
+    with or without trailing slashes, it means that it will be available at:
+    ('0.0.0.0:5000/hbnb' or '0.0.0.0:5000/hbnb/').
+
+    Decorators:
+        app.route
+    """
+    return 'HBNB'
 
 
 if __name__ == '__main__':
