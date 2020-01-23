@@ -90,7 +90,7 @@ def is_number(n):
 
     Take in account that this function will be triggered
     with or without trailing slashes, it means that it will be available at:
-    ('0.0.0.0:5000/number/<int:n>' or '0.0.0.0:5000/c/<int:n>/').
+    ('0.0.0.0:5000/number/<int:n>' or '0.0.0.0:5000/number/<int:n>/').
 
     Arguments:
         n (int):  An integer that will be printed.
