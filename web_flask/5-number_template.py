@@ -3,7 +3,7 @@
     - multiple routes
     - variable rules with default parameters
     - routes with parameters type checking
-    - route that renders a Jinja2 template html
+    - route that renders a Jinja2 template HTML
 """
 
 from flask import (Flask, render_template)
