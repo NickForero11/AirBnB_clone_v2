@@ -36,7 +36,7 @@ def hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def c_message(text):
-    """Helper function to serve a message on the '/hbnb' route and
+    """Helper function to serve a message on the '/c' route and
     the served message is “C ” followed by the value of the text variable.
 
 
